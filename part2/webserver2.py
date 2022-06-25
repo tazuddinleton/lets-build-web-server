@@ -105,7 +105,7 @@ class WsgiServer(object):
             response = f'HTTP/1.1 {status}\r\n'
             for header in response_headers:
                 response += '{0}: {1}\r\n'.format(*header)
-            
+            response += '\r\n'
             for data in result:
                 response += data.decode('utf-8')
             # Print formatted response data 
@@ -113,8 +113,8 @@ class WsgiServer(object):
                 f'< {line}\n' for line in response.splitlines()
             ))
             
-            # response_bytes = .encode()            
-            self.client_connection.sendall(bytes(response, 'utf-8'))
+            response_bytes = response.encode()            
+            self.client_connection.sendall(response_bytes)
         finally: 
             self.client_connection.close()
 
