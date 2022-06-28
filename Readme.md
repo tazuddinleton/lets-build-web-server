@@ -8,3 +8,14 @@ According to wikipedia *A network socket is a software structure within network 
 ## How a basic web server works?
 A web server uses a network socket to communicate with the client or in other word to serve the client. A client and a server uses HTTP protocol to talk to each other. A web server at the beginning opens up a socket connection and starts listening to a particular port for incoming requests. When it detects a request it then reads the request gives back response in the form of a HTTP response.
 ![A typical http request and response body](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages/httpmsgstructure2.png)
+
+
+## How to Run 
+### Create virtual environment
+Create: `python3 -m venv <directory>`
+
+Activate: `source <directory>/bin/activate`
+
+Install : `pip install django flask pyramid`
+
+Run: `python webserver1.py` for webserver1 `python webserver2.py djangoapp:app` for webserver2
