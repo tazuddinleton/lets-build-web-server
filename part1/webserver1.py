@@ -1,12 +1,12 @@
 import socket
 
-HOST, PORT = '', 8080
+HOST, PORT = 'localhost', 8080
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 sock.bind((HOST, PORT))
 sock.listen(1)
-print('Serving HTTP on port %s' % PORT)
+print(f'Serving HTTP on port www.http://{HOST}:{PORT}')
 while True:
     client_connection, client_address = sock.accept()
     request_data = client_connection.recv(1024)
