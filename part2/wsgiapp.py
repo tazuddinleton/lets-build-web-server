@@ -1,8 +1,27 @@
+
 def app(environ, start_response):
-    """A barebones WSGI application.
-    This is a starting point for your own Web framework :)
-    """
-    status = '200 OK'
-    response_headers = [('Content-Type', 'text/plain')]
-    start_response(status, response_headers)
-    return [b'Hello world from a simple WSGI application!\n']
+    print(environ['PATH_INFO'])
+    start_response('200 OK', [('Content-Type', 'application/json')])
+    path = environ['PATH_INFO']
+    
+    if path in routes:
+        return routes[path]()
+    else:
+        return [b'Not found\n']
+
+
+def hello():
+    return [b'[{"hello": "World!"}]\n']
+
+def folks():
+    return [b"""
+    [
+        {"name": "Nick", "age": 10},
+        {"name": "Bob", "age": 60},
+        {"name": "Kevin", "age": 12}
+    ]\n
+    """]
+routes = {
+    "/hello": hello,
+    "/folks": folks
+}

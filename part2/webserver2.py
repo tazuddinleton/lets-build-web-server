@@ -45,7 +45,7 @@ class WsgiServer(object):
         request_data = self.client_connection.recv(1024)
         self.request_data = request_data = request_data.decode('utf-8')
         # Print formated request data 
-        print(''.join(
+        print('requst data: '.join(
             f'< {line}\n' for line in request_data.splitlines()
         ))
 
