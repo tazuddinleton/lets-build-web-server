@@ -1,12 +1,16 @@
-start=$(($(date +%s%N)/1000000))
 
-i=1
-while [ $i -le 100 ]
-do
-    echo $(curl localhost:8080/folks)    
-    i=$(($i+1))
-done
 
-end=$(($(date +%s%N)/1000000))
+FILE="urls.txt"
+if [ ! -e $FILE ]
+then    
+    read N    
+    url="http://localhost:8080/hello"
+    n=1
+    while [ $n -le $N ]
+    do
+        echo "url = $url" >> urls.txt
+        n=$(($n+1))    
+    done
+fi
 
-echo "total time: " $(($end-$start)) "mills"
+echo $(curl --parallel --parallel-immediate --parallel-max 10 --config urls.txt)
