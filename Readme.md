@@ -1,3 +1,5 @@
+This repository is an attempt to follow [Ruslan Spivak's](https://github.com/rspivak/) series called [Let’s Build A Web Server](https://ruslanspivak.com/lsbaws-part1/), I would recommend to visit the original blog post.
+
 ## What is a web server?
 A web server is a network server that is based on a physical server.
 
